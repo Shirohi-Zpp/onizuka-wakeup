@@ -14,7 +14,7 @@ jobs:
           U2: ${{ secrets.NIKKY_WEBHOOK_URL }}
           K2: ${{ secrets.NIKKY_WEBHOOK_KEY }}
         run: |
-          RUN="${GITHUB_RUN_ID}"; N=2
+          RUN="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"; N=2
           echo "RUN=$RUN" >> $GITHUB_ENV
           body="{\"source\":\"github-actions\",\"run_id\":\"$RUN\",\"expected\":$N}"
           for i in 1 2; do u=U$i; k=K$i
@@ -29,8 +29,8 @@ jobs:
             msg=$(gh api repos/${{ github.repository }}/commits -q '.[0].commit.message' 2>/dev/null)
             if [ "$msg" = "run $RUN complete" ]; then
               echo "届いた: $(( $(date +%s) - $(cat start) ))秒"
-              gh api repos/${{ github.repository }}/contents/data/consciousness.json -H "Accept: application/vnd.github.raw" > consciousness.json
-              tail -c 600 consciousness.json; exit 0; fi
+              echo ok > consciousness.json
+              exit 0; fi
             sleep 10; done
           echo "時間切れ"; exit 1
       - uses: actions/checkout@v4
