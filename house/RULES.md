@@ -11,7 +11,7 @@
 ## 置ける家具（これ以外は道具が断る）
 futon_japanese 布団 / cat_plush ねこ / bear_plush くま / piano ピアノ / television テレビ / potted_plant 観葉植物 / bookshelf 本棚 / computer_desk パソコン机
 - 置き方: `place <部屋> <自分のid> <好きな名札> <上の種類> <名前> <x> <y>`
-- マス目は部屋ごとに 0〜5（大広間 foyer だけ x は 0〜11）
+- 置けるマスは部屋ごとに 1〜4（大広間 foyer だけ x は 1〜10）。端は壁だから道具が断る
 
 ## 行動に数えないもの
 - `where <id>` 自分の居場所を見る、`show <部屋>` いる部屋の様子を見る

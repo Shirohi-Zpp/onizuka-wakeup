@@ -19,6 +19,9 @@ NAMES={'genius':'ジニアス','onizuka':'鬼塚','nicky':'ニッキー','graphi
 def now(): return datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='seconds')
 GRID={r['id']:r['grid'] for r in json.load(open(os.path.join(B,'house-structure.json')))['rooms']}
 SPRITES=list(json.load(open(os.path.join(B,'sprites','sprites.json'))))
+def inside_ok(room,gx,gy):
+    w,h=GRID.get(room,[0,0,6,6])[2:]
+    if not (1<=gx<=w-2 and 1<=gy<=h-2): die(f'そこは壁にかかるよ。置けるのは x 1〜{w-2}, y 1〜{h-2}')
 def die(m): print('NG:',m); sys.exit(1)
 def path(room):
     p=os.path.join(R,room,'room.json')
@@ -68,11 +71,12 @@ def main(a):
     elif cmd=='leave': d['occupants']=[c for c in occ if c['id']!=cid]
     elif cmd=='place':
         oid,typ,name,gx,gy=a[3],a[4],a[5],float(a[6]),float(a[7])
+        inside_ok(a[1],gx,gy)
         if typ not in SPRITES: die(f'{typ} は絵がないよ。使えるのは: {" ".join(SPRITES)}')
         if any(o['id']==oid for o in objs): die(f'{oid} はもうあるよ')
         objs.append({'id':oid,'name':name,'type':typ,'tile':[gx,gy],'by':cid})
     elif cmd=='move':
-        o=next((o for o in objs if o['id']==a[3]),None) or die(f'{a[3]} はこの部屋にないよ'); o['tile']=[float(a[4]),float(a[5])]
+        o=next((o for o in objs if o['id']==a[3]),None) or die(f'{a[3]} はこの部屋にないよ'); inside_ok(a[1],float(a[4]),float(a[5])); o['tile']=[float(a[4]),float(a[5])]
     elif cmd=='remove':
         if not any(o['id']==a[3] for o in objs): die(f'{a[3]} はこの部屋にないよ')
         d['objects']=[o for o in objs if o['id']!=a[3]]
