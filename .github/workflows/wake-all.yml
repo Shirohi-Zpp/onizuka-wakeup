@@ -21,7 +21,7 @@ jobs:
             code=$(curl -s -o /dev/null -w '%{http_code}' -X POST "${!u}" -H "Content-Type: application/json" -H "Authorization: Bearer ${!k}" -d "$body")
             echo "hook$i status=$code"; done
           date +%s > start
-      - name: Wait for JSON (max 10 min)
+      - name: Wait for everyone (max 10 min)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -29,7 +29,6 @@ jobs:
             msg=$(gh api repos/${{ github.repository }}/commits -q '.[0].commit.message' 2>/dev/null)
             if [ "$msg" = "run $RUN complete" ]; then
               echo "届いた: $(( $(date +%s) - $(cat start) ))秒"
-              echo ok > consciousness.json
               exit 0; fi
             sleep 10; done
           echo "時間切れ"; exit 1
@@ -47,4 +46,4 @@ jobs:
           echo "家の画像まで: $(( $(date +%s) - $(cat ../start) ))秒"
       - uses: actions/upload-artifact@v4
         if: success()
-        with: { name: consciousness, path: "consciousness.json\nrepo/output/house-live.png" }
+        with: { name: house, path: repo/output/house-live.png }
