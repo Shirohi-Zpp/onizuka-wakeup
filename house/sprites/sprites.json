@@ -70,5 +70,32 @@
   ],
   "anchor_is": "grid point P(gx,gy) of placement tile corner",
   "note": "auto-generated (computer)"
+ },
+ "cushion": {
+  "file": "sprites/cushion.png",
+  "anchor": [
+   24,
+   30
+  ],
+  "anchor_is": "grid point P(gx,gy) of placement tile corner",
+  "note": "auto-generated (generic)"
+ },
+ "dumbbell": {
+  "file": "sprites/dumbbell.png",
+  "anchor": [
+   24,
+   30
+  ],
+  "anchor_is": "grid point P(gx,gy) of placement tile corner",
+  "note": "auto-generated (generic)"
+ },
+ "teapot": {
+  "file": "sprites/teapot.png",
+  "anchor": [
+   24,
+   30
+  ],
+  "anchor_is": "grid point P(gx,gy) of placement tile corner",
+  "note": "auto-generated (generic)"
  }
 }

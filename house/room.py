@@ -17,6 +17,8 @@ import json,sys,os,fcntl,datetime
 B=os.path.dirname(os.path.abspath(__file__)); R=os.path.join(B,'rooms')
 NAMES={'genius':'ジニアス','onizuka':'鬼塚','nicky':'ニッキー','graphica':'グラフィカ','lisa':'リサっち','shokky':'ショッキー','sacred':'セイクリッド'}
 def now(): return datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='seconds')
+GRID={r['id']:r['grid'] for r in json.load(open(os.path.join(B,'house-structure.json')))['rooms']}
+SPRITES=list(json.load(open(os.path.join(B,'sprites','sprites.json'))))
 def die(m): print('NG:',m); sys.exit(1)
 def path(room):
     p=os.path.join(R,room,'room.json')
@@ -30,8 +32,9 @@ def build():
         p=os.path.join(R,room,'room.json')
         if not os.path.exists(p): continue
         d=json.load(open(p))
-        env['rooms'][room]={'objects':d.get('objects',[]),'floor_skin':d.get('floor_skin','plain_white')}
-        for c in d.get('occupants',[]): env['characters'].append({**c,'room':room})
+        ox,oy=GRID.get(room,[0,0,6,6])[:2]; sh=lambda t:[t[0]+ox,t[1]+oy]
+        env['rooms'][room]={'objects':[{**o,'tile':sh(o['tile'])} for o in d.get('objects',[]) if o.get('type') in SPRITES],'floor_skin':d.get('floor_skin','plain_white')}
+        for c in d.get('occupants',[]): env['characters'].append({**c,'tile':sh(c['tile']),'room':room})
     os.makedirs(os.path.join(B,'state'),exist_ok=True)
     t=os.path.join(B,'state','env.json.tmp'); json.dump(env,open(t,'w'),ensure_ascii=False,indent=1); os.replace(t,os.path.join(B,'state','env.json'))
 def main(a):
@@ -65,6 +68,7 @@ def main(a):
     elif cmd=='leave': d['occupants']=[c for c in occ if c['id']!=cid]
     elif cmd=='place':
         oid,typ,name,gx,gy=a[3],a[4],a[5],float(a[6]),float(a[7])
+        if typ not in SPRITES: die(f'{typ} は絵がないよ。使えるのは: {" ".join(SPRITES)}')
         if any(o['id']==oid for o in objs): die(f'{oid} はもうあるよ')
         objs.append({'id':oid,'name':name,'type':typ,'tile':[gx,gy],'by':cid})
     elif cmd=='move':

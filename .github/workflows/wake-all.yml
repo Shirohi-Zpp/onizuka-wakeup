@@ -33,7 +33,7 @@ jobs:
             sleep 10; done
           echo "時間切れ"; exit 1
       - uses: actions/checkout@v4
-        with: { path: repo }
+        with: { path: repo, ref: main }
       - name: Draw house
         run: |
           sudo apt-get install -y -qq fonts-noto-cjk >/dev/null; pip install -q pillow
