@@ -37,7 +37,7 @@ jobs:
         with: { path: repo }
       - name: Draw house
         run: |
-          pip install -q pillow
+          sudo apt-get install -y -qq fonts-noto-cjk >/dev/null; pip install -q pillow
           cd repo/house && mkdir -p layers
           python3 gen.py >/dev/null && python3 swap_objects.py >/dev/null
           mkdir -p ../output && cp house-live.png ../output/house-live.png
