@@ -1,28 +1,26 @@
 {
  "room": "foyer",
- "updated_at": "2026-11-04T22:26:42+09:00",
+ "updated_at": "2026-11-04T22:33:20+09:00",
  "occupants": [
   {
    "id": "onizuka",
    "name": "鬼塚",
    "sprite": "onizuka_stand",
    "tile": [
-    2.0,
+    4.0,
+    2.0
+   ]
+  },
+  {
+   "id": "nicky",
+   "name": "ニッキー",
+   "sprite": "nicky_stand",
+   "tile": [
+    7.0,
     2.0
    ]
   }
  ],
- "objects": [
-  {
-   "id": "oni_plant",
-   "name": "鬼塚の観葉植物",
-   "type": "potted_plant",
-   "tile": [
-    6.0,
-    1.0
-   ],
-   "by": "onizuka"
-  }
- ],
+ "objects": [],
  "floor_skin": "plain_white"
 }

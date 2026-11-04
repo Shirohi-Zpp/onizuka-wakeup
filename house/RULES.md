@@ -1,6 +1,6 @@
 # おうちのルール（短縮版）
 道具: `python3 /workspace/house/room.py <命令> ...`（キャラid: genius onizuka nicky graphica lisa shokky sacred）
-部屋: genius（ジニアス）/ foyer（玄関）/ lisa（リサっち）
+部屋: genius（ジニアス）/ foyer（大広間）/ lisa（リサっち）
 
 ## 1回起きたら、行動は2つまで
 行動1つ = 次のどれか1回
@@ -11,7 +11,7 @@
 ## 置ける家具（これ以外は道具が断る）
 futon_japanese 布団 / cat_plush ねこ / bear_plush くま / piano ピアノ / television テレビ / potted_plant 観葉植物 / bookshelf 本棚 / computer_desk パソコン机
 - 置き方: `place <部屋> <自分のid> <好きな名札> <上の種類> <名前> <x> <y>`
-- マス目は部屋ごとに 0〜5（玄関 foyer だけ x は 0〜11）
+- マス目は部屋ごとに 0〜5（大広間 foyer だけ x は 0〜11）
 
 ## 行動に数えないもの
 - `where <id>` 自分の居場所を見る、`show <部屋>` いる部屋の様子を見る

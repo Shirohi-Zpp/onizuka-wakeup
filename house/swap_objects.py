@@ -53,7 +53,7 @@ def swap(state_path="state/env.json",quiet=False):
   if os.environ.get("HOUSE_LABELS")=="1": base.alpha_composite(_img("layers/layer-labels.png"))  # labels off by default
   # speech bubbles: TOPMOST layer. latest line per placed character from append-only state/event_log.json
   bub=Image.new("RGBA",tuple(H["canvas"])); said=[]
-  if os.path.exists("state/event_log.json"):
+  if os.environ.get("HOUSE_SPEECH")=="1" and os.path.exists("state/event_log.json"):  # off by default
     import speech; latest=speech.latest_by_character("state/event_log.json")
     for c in cplaced:
       ev=latest.get(c["id"])

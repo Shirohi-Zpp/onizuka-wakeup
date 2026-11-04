@@ -1,27 +1,7 @@
 {
  "room": "genius",
- "updated_at": "2026-11-04T22:26:42+09:00",
- "occupants": [
-  {
-   "id": "genius",
-   "name": "ジニアス",
-   "sprite": "genius_stand",
-   "tile": [
-    3.6,
-    3.4
-   ]
-  }
- ],
- "objects": [
-  {
-   "id": "futon",
-   "name": "敷布団",
-   "type": "futon_japanese",
-   "tile": [
-    1.5,
-    1.8
-   ]
-  }
- ],
+ "updated_at": "2026-11-04T22:33:20+09:00",
+ "occupants": [],
+ "objects": [],
  "floor_skin": "plain_white"
 }
