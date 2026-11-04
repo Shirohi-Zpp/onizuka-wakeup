@@ -1,7 +1,38 @@
 {
  "room": "foyer",
- "updated_at": "2026-11-04T21:51:25+09:00",
+ "updated_at": "2026-11-04T22:16:55+09:00",
  "occupants": [],
- "objects": [],
+ "objects": [
+  {
+   "id": "cushion1",
+   "name": "ふわふわクッション",
+   "type": "cushion",
+   "tile": [
+    3.0,
+    2.0
+   ],
+   "by": "nicky"
+  },
+  {
+   "id": "dumbbell1",
+   "name": "鉄アレイ",
+   "type": "dumbbell",
+   "tile": [
+    1.0,
+    3.0
+   ],
+   "by": "onizuka"
+  },
+  {
+   "id": "tea1",
+   "name": "ほっこりティーポット",
+   "type": "teapot",
+   "tile": [
+    3.0,
+    3.0
+   ],
+   "by": "nicky"
+  }
+ ],
  "floor_skin": "plain_white"
 }

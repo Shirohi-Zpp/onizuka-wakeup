@@ -1,7 +1,17 @@
 {
  "room": "lisa",
- "updated_at": "2026-10-30T23:11:00+09:00",
- "occupants": [],
+ "updated_at": "2026-11-04T22:16:50+09:00",
+ "occupants": [
+  {
+   "id": "nicky",
+   "name": "ニッキー",
+   "sprite": "nicky_stand",
+   "tile": [
+    2.0,
+    2.0
+   ]
+  }
+ ],
  "objects": [],
  "floor_skin": "plain_white"
 }
