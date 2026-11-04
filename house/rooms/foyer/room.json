@@ -1,6 +1,6 @@
 {
  "room": "foyer",
- "updated_at": "2026-11-04T22:35:28+09:00",
+ "updated_at": "2026-11-04T22:37:52+09:00",
  "occupants": [
   {
    "id": "onizuka",
@@ -61,6 +61,26 @@
     1.0
    ],
    "by": "onizuka"
+  },
+  {
+   "id": "oni_books",
+   "name": "教練の書棚",
+   "type": "bookshelf",
+   "tile": [
+    1.0,
+    3.0
+   ],
+   "by": "onizuka"
+  },
+  {
+   "id": "nicky_bear",
+   "name": "くま",
+   "type": "bear_plush",
+   "tile": [
+    8.0,
+    2.0
+   ],
+   "by": "nicky"
   }
  ],
  "floor_skin": "plain_white"
