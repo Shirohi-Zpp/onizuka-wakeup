@@ -1,6 +1,6 @@
 {
  "room": "lisa",
- "updated_at": "2026-11-04T22:16:50+09:00",
+ "updated_at": "2026-11-04T22:26:44+09:00",
  "occupants": [
   {
    "id": "nicky",
@@ -12,6 +12,27 @@
    ]
   }
  ],
- "objects": [],
+ "objects": [
+  {
+   "id": "plant1",
+   "name": "観葉植物",
+   "type": "potted_plant",
+   "tile": [
+    0.0,
+    0.0
+   ],
+   "by": "nicky"
+  },
+  {
+   "id": "bear1",
+   "name": "くま",
+   "type": "bear_plush",
+   "tile": [
+    3.0,
+    2.0
+   ],
+   "by": "nicky"
+  }
+ ],
  "floor_skin": "plain_white"
 }
