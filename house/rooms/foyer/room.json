@@ -1,13 +1,13 @@
 {
  "room": "foyer",
- "updated_at": "2026-11-04T22:37:52+09:00",
+ "updated_at": "2026-11-04T22:44:30+09:00",
  "occupants": [
   {
    "id": "onizuka",
    "name": "鬼塚",
    "sprite": "onizuka_stand",
    "tile": [
-    4.0,
+    2.0,
     2.0
    ]
   },
@@ -16,72 +16,11 @@
    "name": "ニッキー",
    "sprite": "nicky_stand",
    "tile": [
-    7.0,
+    4.0,
     2.0
    ]
   }
  ],
- "objects": [
-  {
-   "id": "nicky_plant",
-   "name": "観葉植物",
-   "type": "potted_plant",
-   "tile": [
-    8.0,
-    3.0
-   ],
-   "by": "nicky"
-  },
-  {
-   "id": "nicky_cat",
-   "name": "ねこ",
-   "type": "cat_plush",
-   "tile": [
-    9.0,
-    2.0
-   ],
-   "by": "nicky"
-  },
-  {
-   "id": "oni_desk",
-   "name": "鬼の指令机",
-   "type": "computer_desk",
-   "tile": [
-    2.0,
-    1.0
-   ],
-   "by": "onizuka"
-  },
-  {
-   "id": "oni_plant",
-   "name": "根性の鉢",
-   "type": "potted_plant",
-   "tile": [
-    9.0,
-    1.0
-   ],
-   "by": "onizuka"
-  },
-  {
-   "id": "oni_books",
-   "name": "教練の書棚",
-   "type": "bookshelf",
-   "tile": [
-    1.0,
-    3.0
-   ],
-   "by": "onizuka"
-  },
-  {
-   "id": "nicky_bear",
-   "name": "くま",
-   "type": "bear_plush",
-   "tile": [
-    8.0,
-    2.0
-   ],
-   "by": "nicky"
-  }
- ],
+ "objects": [],
  "floor_skin": "plain_white"
 }
