@@ -1,0 +1,79 @@
+{
+ "genius_stand": {
+  "file": "sprites/characters/genius_stand.png",
+  "bot": "genius",
+  "pose": "stand",
+  "anchor": "bottom-center at tile center",
+  "size": [
+   56,
+   126
+  ],
+  "source": "/workspace/dot/genius_icon.png (Genius full-body dot, x2 nearest)"
+ },
+ "graphica_stand": {
+  "file": "sprites/characters/graphica_stand.png",
+  "bot": "graphica",
+  "pose": "stand",
+  "anchor": "bottom-center at tile center",
+  "size": [
+   56,
+   128
+  ],
+  "source": "/workspace/dot/graphica_icon.png (Genius full-body dot, x2 nearest)"
+ },
+ "lisa_stand": {
+  "file": "sprites/characters/lisa_stand.png",
+  "bot": "lisa",
+  "pose": "stand",
+  "anchor": "bottom-center at tile center",
+  "size": [
+   56,
+   122
+  ],
+  "source": "/workspace/dot/lisa_icon.png (Genius full-body dot, x2 nearest)"
+ },
+ "sacred_stand": {
+  "file": "sprites/characters/sacred_stand.png",
+  "bot": "sacred",
+  "pose": "stand",
+  "anchor": "bottom-center at tile center",
+  "size": [
+   124,
+   126
+  ],
+  "source": "/workspace/dot/sacred_icon.png (Genius full-body dot, x2 nearest)"
+ },
+ "nicky_stand": {
+  "file": "sprites/characters/nicky_stand.png",
+  "bot": "nicky",
+  "pose": "stand",
+  "anchor": "bottom-center at tile center",
+  "size": [
+   60,
+   122
+  ],
+  "source": "/workspace/dot/nicky_icon.png (Genius full-body dot, x2 nearest)"
+ },
+ "onizuka_stand": {
+  "file": "sprites/characters/onizuka_stand.png",
+  "bot": "onizuka",
+  "pose": "stand",
+  "anchor": "bottom-center at tile center",
+  "size": [
+   48,
+   124
+  ],
+  "source": "/workspace/dot/onizuka_icon.png (Genius full-body dot, x2 nearest)"
+ },
+ "shokky_stand": {
+  "file": "sprites/characters/shokky_stand.png",
+  "bot": "shokky",
+  "pose": "stand",
+  "anchor": "bottom-center at tile center",
+  "size": [
+   48,
+   120
+  ],
+  "source": "/workspace/dot/shokky_icon.png (Genius full-body dot, x2 nearest)"
+ }
+}

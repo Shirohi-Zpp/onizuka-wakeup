@@ -1,0 +1,411 @@
+{
+ "house": "home",
+ "style": "oblique-isometric-box-pop",
+ "default_interior": {
+  "walls": "white",
+  "floors": "white",
+  "note": "used when no interior is specified; per-room colors/wallpaper may later come from an order/catalog system (not implemented)"
+ },
+ "projection": {
+  "type": "isometric 2:1",
+  "tile_w": 80,
+  "tile_h": 40,
+  "origin_screen": [
+   640,
+   170
+  ],
+  "screen_x": "OX+(gx-gy)*tile_w/2",
+  "screen_y": "OY+(gx+gy)*tile_h/2 - z",
+  "grid_size": [
+   12,
+   12
+  ],
+  "back_wall_height": 130,
+  "partition_height": 34
+ },
+ "canvas": [
+  1280,
+  720
+ ],
+ "rooms": [
+  {
+   "id": "genius",
+   "name": "ジニアスの部屋",
+   "grid": [
+    0,
+    0,
+    6,
+    6
+   ],
+   "bounds": [
+    400,
+    170,
+    480,
+    240
+   ],
+   "floor_polygon": [
+    [
+     640,
+     170
+    ],
+    [
+     880,
+     290
+    ],
+    [
+     640,
+     410
+    ],
+    [
+     400,
+     290
+    ]
+   ],
+   "object_slots": [
+    {
+     "tile": [
+      1,
+      1
+     ],
+     "screen_bounds": [
+      616,
+      218,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      4,
+      1
+     ],
+     "screen_bounds": [
+      736,
+      278,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      1,
+      4
+     ],
+     "screen_bounds": [
+      496,
+      278,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      4,
+      4
+     ],
+     "screen_bounds": [
+      616,
+      338,
+      48,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lisa",
+   "name": "リサっちの部屋",
+   "grid": [
+    6,
+    0,
+    6,
+    6
+   ],
+   "bounds": [
+    640,
+    290,
+    480,
+    240
+   ],
+   "floor_polygon": [
+    [
+     880,
+     290
+    ],
+    [
+     1120,
+     410
+    ],
+    [
+     880,
+     530
+    ],
+    [
+     640,
+     410
+    ]
+   ],
+   "object_slots": [
+    {
+     "tile": [
+      7,
+      1
+     ],
+     "screen_bounds": [
+      856,
+      338,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      10,
+      1
+     ],
+     "screen_bounds": [
+      976,
+      398,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      7,
+      4
+     ],
+     "screen_bounds": [
+      736,
+      398,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      10,
+      4
+     ],
+     "screen_bounds": [
+      856,
+      458,
+      48,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "id": "foyer",
+   "name": "大広間",
+   "grid": [
+    0,
+    6,
+    12,
+    6
+   ],
+   "bounds": [
+    160,
+    290,
+    720,
+    360
+   ],
+   "floor_polygon": [
+    [
+     400,
+     290
+    ],
+    [
+     880,
+     530
+    ],
+    [
+     640,
+     650
+    ],
+    [
+     160,
+     410
+    ]
+   ],
+   "object_slots": [
+    {
+     "tile": [
+      1,
+      7
+     ],
+     "screen_bounds": [
+      376,
+      338,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      10,
+      7
+     ],
+     "screen_bounds": [
+      736,
+      518,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      1,
+      10
+     ],
+     "screen_bounds": [
+      256,
+      398,
+      48,
+      24
+     ]
+    },
+    {
+     "tile": [
+      10,
+      10
+     ],
+     "screen_bounds": [
+      616,
+      578,
+      48,
+      24
+     ]
+    }
+   ]
+  }
+ ],
+ "connections": [
+  {
+   "from": "outside",
+   "to": "foyer",
+   "door": {
+    "screen_bounds": [
+     256,
+     243,
+     48,
+     119
+    ],
+    "grid": [
+     [
+      0,
+      8.4
+     ],
+     [
+      0,
+      9.6
+     ]
+    ]
+   },
+   "note": "door in foyer back-left wall"
+  },
+  {
+   "from": "foyer",
+   "to": "genius",
+   "door": {
+    "screen_bounds": [
+     496,
+     304,
+     48,
+     58
+    ],
+    "grid": [
+     [
+      2.4,
+      6
+     ],
+     [
+      3.6,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "from": "foyer",
+   "to": "lisa",
+   "door": {
+    "screen_bounds": [
+     736,
+     424,
+     48,
+     58
+    ],
+    "grid": [
+     [
+      8.4,
+      6
+     ],
+     [
+      9.6,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "from": "genius",
+   "to": "lisa",
+   "door": {
+    "screen_bounds": [
+     736,
+     304,
+     48,
+     58
+    ],
+    "grid": [
+     [
+      6,
+      2.4
+     ],
+     [
+      6,
+      3.6
+     ]
+    ]
+   }
+  }
+ ],
+ "layers": [
+  "walls",
+  "floors",
+  "labels",
+  "objects",
+  "characters",
+  "lighting"
+ ],
+ "layer_files": {
+  "background": "layers/layer-background.png",
+  "floors": "layers/layer-floors.png",
+  "empty_slots": "layers/layer-empty.png",
+  "walls": "layers/layer-walls.png (= walls_back + walls_front, legacy)",
+  "walls_back": "layers/layer-walls-back.png",
+  "walls_front": "layers/layer-walls-front.png",
+  "objects": "layers/layer-objects.png (built by swap_objects.py)",
+  "lighting": "layers/layer-lighting.png (make_lighting.py)",
+  "floor_skins": "layers/layer-floor-skins.png (floor_skins.py via swap_objects.py; per-room rooms.<id>.floor_skin)",
+  "labels": "layers/layer-labels.png"
+ },
+ "composite_order": [
+  "background",
+  "floors",
+  "floor_skins",
+  "empty_slots",
+  "walls_back",
+  "objects",
+  "walls_front",
+  "characters",
+  "speech"
+ ],
+ "lighting_optional": "off by default; HOUSE_LIGHTING=1 to composite layers/layer-lighting.png after characters",
+ "lighting": "warm amber floor-glow overlay (make_lighting.py, alpha-over, clipped to house); pendant lamp fixture abandoned",
+ "live_output": "house-live.png",
+ "state_file": "state/env.json",
+ "update_model": "rooms fixed; swap objects/state layers; regenerate base only on structural change"
+}

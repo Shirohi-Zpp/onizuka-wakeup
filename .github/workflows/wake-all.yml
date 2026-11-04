@@ -5,7 +5,7 @@ jobs:
   wake:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - name: Wake everyone
         env:
@@ -33,6 +33,18 @@ jobs:
               tail -c 600 consciousness.json; exit 0; fi
             sleep 10; done
           echo "時間切れ"; exit 1
+      - uses: actions/checkout@v4
+        with: { path: repo }
+      - name: Draw house
+        run: |
+          pip install -q pillow
+          cd repo/house && mkdir -p layers
+          python3 gen.py >/dev/null && python3 swap_objects.py >/dev/null
+          mkdir -p ../output && cp house-live.png ../output/house-live.png
+          cd .. && git config user.name "github-actions" && git config user.email "actions@users.noreply.github.com"
+          git add output/house-live.png
+          git diff --cached --quiet || (git commit -qm "house for run $RUN" && git push -q)
+          echo "家の画像まで: $(( $(date +%s) - $(cat ../start) ))秒"
       - uses: actions/upload-artifact@v4
         if: success()
-        with: { name: consciousness, path: consciousness.json }
+        with: { name: consciousness, path: "consciousness.json\nrepo/output/house-live.png" }

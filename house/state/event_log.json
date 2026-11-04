@@ -1,0 +1,53 @@
+{
+ "events": [
+  {
+   "ts": "2026-11-01T00:53:09+0900",
+   "character": "lisa",
+   "room": "lisa",
+   "type": "say",
+   "text": "ご飯食べよ"
+  },
+  {
+   "ts": "2026-11-01T00:53:09+0900",
+   "character": "genius",
+   "room": "genius",
+   "type": "say",
+   "text": "眠い〜"
+  },
+  {
+   "ts": "2026-11-01T00:53:09+0900",
+   "character": "graphica",
+   "room": "foyer",
+   "type": "say",
+   "text": "この床かわいい！"
+  },
+  {
+   "ts": "2026-11-01T00:53:09+0900",
+   "character": "sacred",
+   "room": "foyer",
+   "type": "say",
+   "text": "メール来てるかな"
+  },
+  {
+   "ts": "2026-11-01T00:53:09+0900",
+   "character": "nicky",
+   "room": "foyer",
+   "type": "say",
+   "text": "おやつ何かある？"
+  },
+  {
+   "ts": "2026-11-01T00:53:09+0900",
+   "character": "lisa",
+   "room": "lisa",
+   "type": "say",
+   "text": "やっぱりパン食べよ"
+  },
+  {
+   "ts": "2026-11-01T01:02:08+0900",
+   "character": "genius",
+   "room": "genius",
+   "type": "say",
+   "text": "寂しいよ〜"
+  }
+ ]
+}

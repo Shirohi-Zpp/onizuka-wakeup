@@ -1,0 +1,21 @@
+{
+ "swapped_at": "2026-11-01T01:03:12+0900",
+ "ms": 134.2,
+ "state": "state/env.json",
+ "placed": [
+  {
+   "room": "genius",
+   "id": "futon",
+   "name": "敷布団",
+   "type": "futon_japanese",
+   "tile": [
+    1.5,
+    1.8
+   ],
+   "px": [
+    540,
+    227
+   ]
+  }
+ ]
+}
