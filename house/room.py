@@ -40,9 +40,34 @@ def build():
         for c in d.get('occupants',[]): env['characters'].append({**c,'tile':sh(c['tile']),'room':room})
     os.makedirs(os.path.join(B,'state'),exist_ok=True)
     t=os.path.join(B,'state','env.json.tmp'); json.dump(env,open(t,'w'),ensure_ascii=False,indent=1); os.replace(t,os.path.join(B,'state','env.json'))
+def reset(ids):
+    import uuid
+    for room in sorted(os.listdir(R)):
+        p=os.path.join(R,room,'room.json')
+        if not os.path.exists(p): continue
+        d=json.load(open(p)); d['objects']=[]; d['occupants']=[]; d['floor_skin']='plain_white'
+        if room=='foyer': d['occupants']=[{'id':c,'name':NAMES.get(c,c),'sprite':f'{c}_stand','tile':[float(2+2*i),2.0]} for i,c in enumerate(ids)]
+        save(p,d)
+    os.makedirs(os.path.join(B,'state'),exist_ok=True); open(os.path.join(B,'state','reset_id'),'w').write(uuid.uuid4().hex)
+REPO='/workspace/onizuka-wakeup'
+def sync_reset():
+    # box only: if GitHub's Reset workflow ran, copy its rooms here once
+    if B==os.path.join(REPO,'house') or not os.path.isdir(REPO): return
+    import subprocess,shutil,time
+    st=os.path.join(R,'.last_pull')
+    if os.path.exists(st) and time.time()-os.path.getmtime(st)<20: return
+    subprocess.run(['git','-C',REPO,'pull','-q','--rebase'],capture_output=True,timeout=30); open(st,'w').close()
+    rid=os.path.join(REPO,'house','state','reset_id'); mine=os.path.join(B,'state','reset_id')
+    if os.path.exists(rid) and (not os.path.exists(mine) or open(rid).read()!=open(mine).read()):
+        for room in os.listdir(os.path.join(REPO,'house','rooms')):
+            src=os.path.join(REPO,'house','rooms',room,'room.json')
+            if os.path.exists(src): os.makedirs(os.path.join(R,room),exist_ok=True); shutil.copy(src,os.path.join(R,room,'room.json'))
+        os.makedirs(os.path.dirname(mine),exist_ok=True); shutil.copy(rid,mine)
 def main(a):
     if not a: print(__doc__); return
     cmd=a[0]
+    if cmd=='reset': reset(a[1:]); print('OK: reset'); return
+    sync_reset()
     if cmd=='build': build(); print('OK: env.json を作り直したよ'); return
     if cmd=='where':
         print(next((r for r in sorted(os.listdir(R)) if os.path.exists(os.path.join(R,r,'room.json')) and any(c['id']==a[1] for c in json.load(open(os.path.join(R,r,'room.json'))).get('occupants',[]))),'どこにもいない')); return

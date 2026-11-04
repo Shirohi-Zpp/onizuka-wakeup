@@ -1,0 +1,26 @@
+name: Reset House
+on:
+  workflow_dispatch:
+    inputs:
+      bots:
+        description: "大広間(foyer)に置くBotのid（空白区切り）"
+        default: "onizuka nicky"
+permissions: { contents: write }
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - name: Reset and draw
+        env: { BOTS: "${{ github.event.inputs.bots }}" }
+        run: |
+          [[ "$BOTS" =~ ^[a-z\ ]*$ ]] || { echo "idは英小文字だけ"; exit 1; }
+          sudo apt-get install -y -qq fonts-noto-cjk >/dev/null; pip install -q pillow
+          cd house && mkdir -p layers
+          python3 room.py reset $BOTS && python3 room.py build >/dev/null
+          python3 gen.py >/dev/null && python3 swap_objects.py >/dev/null
+          mkdir -p ../output && cp house-live.png ../output/house-live.png
+          cd .. && git config user.name "github-actions" && git config user.email "actions@users.noreply.github.com"
+          git add house/rooms house/state/reset_id output/house-live.png
+          git commit -qm "reset house" && git push -q
