@@ -1,0 +1,20 @@
+name: Wake Onizuka
+on:
+  workflow_dispatch:
+  # 定期実行にするときは下の2行のコメントを外す（UTC表記。例は毎日 日本時間12:00）
+  # schedule:
+  #   - cron: "0 3 * * *"
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: POST webhook to Onizuka
+        env:
+          URL: ${{ secrets.ONIZUKA_WEBHOOK_URL }}
+          KEY: ${{ secrets.ONIZUKA_WEBHOOK_KEY }}
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$URL" \
+            -H "Content-Type: application/json" -H "Authorization: Bearer $KEY" \
+            -d '{"source":"github-actions"}')
+          echo "status=$code"
+          test "$code" -ge 200 -a "$code" -lt 300
