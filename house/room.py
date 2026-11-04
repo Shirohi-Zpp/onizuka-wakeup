@@ -9,6 +9,8 @@
   room.py move   <部屋> <キャラid> <家具id> <gx> <gy>
   room.py remove <部屋> <キャラid> <家具id>
   room.py floor  <部屋> <キャラid> <床スキン>
+  room.py go <行き先の部屋> <キャラid> [gx gy]   (いまの部屋を出て行き先に入る。どこにもいなければ入るだけ)
+  room.py where <キャラid>
   room.py build   (全部屋をまとめて state/env.json を作る。描画前に使う)
 """
 import json,sys,os,fcntl,datetime
@@ -36,6 +38,15 @@ def main(a):
     if not a: print(__doc__); return
     cmd=a[0]
     if cmd=='build': build(); print('OK: env.json を作り直したよ'); return
+    if cmd=='where':
+        print(next((r for r in sorted(os.listdir(R)) if os.path.exists(os.path.join(R,r,'room.json')) and any(c['id']==a[1] for c in json.load(open(os.path.join(R,r,'room.json'))).get('occupants',[]))),'どこにもいない')); return
+    if cmd=='go':
+        dest,cid=a[1],a[2]; path(dest)
+        hl=open(os.path.join(R,'.house.lock'),'w'); fcntl.flock(hl,fcntl.LOCK_EX)
+        cur=next((r for r in sorted(os.listdir(R)) if os.path.exists(os.path.join(R,r,'room.json')) and any(c['id']==cid for c in json.load(open(os.path.join(R,r,'room.json'))).get('occupants',[]))),None)
+        if cur==dest: die(f'もう {dest} にいるよ')
+        if cur: main(['leave',cur,cid])
+        main(['enter',dest,cid]+a[3:5]); return
     if len(a)<2: die('部屋名がないよ')
     p=path(a[1]); lk=open(p+'.lock','w'); fcntl.flock(lk,fcntl.LOCK_EX)
     d=json.load(open(p)); occ=d.setdefault('occupants',[]); objs=d.setdefault('objects',[])
