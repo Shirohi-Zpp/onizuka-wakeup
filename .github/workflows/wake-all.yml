@@ -39,7 +39,7 @@ jobs:
         run: |
           sudo apt-get install -y -qq fonts-noto-cjk >/dev/null; pip install -q pillow
           cd repo/house && mkdir -p layers
-          python3 gen.py >/dev/null && python3 swap_objects.py >/dev/null
+          python3 room.py build >/dev/null && python3 gen.py >/dev/null && python3 swap_objects.py >/dev/null
           mkdir -p ../output && cp house-live.png ../output/house-live.png
           cd .. && git config user.name "github-actions" && git config user.email "actions@users.noreply.github.com"
           git add output/house-live.png
